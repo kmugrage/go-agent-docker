@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'json'
 require 'net/http'
@@ -26,7 +25,7 @@ def disable_agent(uuid)
 	http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new("/go/api/agents/#{uuid}/disable")
   response = http.request(request)
-  puts response
+  puts response.to_s
 end
 
 def delete_agent(uuid)
