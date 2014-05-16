@@ -1,5 +1,17 @@
-go-agent-docker
+Go Agent Docker
 ===============
 
-Creating Go CD agents from a dockerfile. This probably isn't useful to anyone but me yet as I'm learning
-and using hard coded stuff.
+Creating Go CD agents from a dockerfile. 
+
+This is really mostly a spike at this point. I wanted a way to run multiple agents in
+discrete containers on my machine. The files should work for anyone else if you edit
+go-agent and autoregister.properties
+
+## Usage
+
+git clone this repo
+
+<code>
+docker build -t your-repo-name/go-agent .
+docker run -d your-repo-name/go-agent
+</code>
