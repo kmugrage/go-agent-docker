@@ -13,5 +13,6 @@ git clone this repo
 
 <code>
 docker build -t your-repo-name/go-agent .
+
 docker run -d your-repo-name/go-agent
 </code>
