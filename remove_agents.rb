@@ -22,29 +22,27 @@ def agent_search
 end
 
 def disable_agent(uuid)
-	url = "http://localhost:8153/go/api/agents/#{uuid}/disable"
-	puts url
-	#resp = Net::HTTP.get_response(URI.parse(url))
-	#data = resp.body
-	
-	#result = JSON.parse(data)
+	uri = URI.parse("http://localhost:8153")
+	http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Post.new("/go/api/agents/#{uuid}/disable")
+  response = http.request(request)
+  puts response
+end
 
-	#return result
+def delete_agent(uuid)
+  uri = URI.parse("http://localhost:8153")
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Post.new("/go/api/agents/#{uuid}/delete")
+  response = http.request(request)
+  puts response
 end
 
 agents = agent_search()
 print agents.is_a?(Array)
 print "\n"
 
-#agents.each do |agent|
-#	agent.each_with_index do |val, index|
-#		puts "Agent: #{index}"
-#	end
-#end
-
-
 for index in 0 ... agents.size
   # print agents[index].is_a?(Hash)
   disable_agent(agents[index]["uuid"])
-	#puts "agents[#{index}] = #{agents[index].inspect}"
+  delete_agent(agents[index]["uuid"])
 end
