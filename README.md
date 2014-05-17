@@ -20,9 +20,3 @@ This will launch 10 agents in containers
 <code>
 for i in {1..10} ; do docker run -d kmugrage/go-agent ; done
 </code>
-
-## ToDo
-
-I don't have a good way to clean this all up yet. Probably need some sort of script
-that will stop / rm all of the containers and then use the Go API to delete them from 
-there as well. 
