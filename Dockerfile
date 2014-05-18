@@ -32,7 +32,13 @@ ADD autoregister.properties /var/lib/go-agent/config/autoregister.properties
 # This file is also very specific to my installation. It tells the Go agent where the Go server
 # is on my internal network.
 ADD go-agent /etc/default/go-agent
-ADD hosts /etc/hosts
+
+# Need to handle Docker's limitation on edit /etc/hosts
+
+ADD hosts /tmp/hosts
+RUN mkdir -p -- /lib-override && cp /lib/x86_64-linux-gnu/libnss_files.so.2 /lib-override
+RUN perl -pi -e 's:/etc/hosts:/tmp/hosts:g' /lib-override/libnss_files.so.2
+ENV LD_LIBRARY_PATH /lib-override
 
 # This should probably be something like supervisord to keep the container running
 CMD /etc/init.d/go-agent start && tail -F /var/log/go-agent/go-agent.log
