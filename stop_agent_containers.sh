@@ -20,3 +20,7 @@ rm_containers()
 
 stop_containers
 rm_containers
+
+echo "done"
+
+echo $?
