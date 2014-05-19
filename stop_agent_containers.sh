@@ -1,14 +1,9 @@
 #!/bin/bash
 
-docker ps --no-trunc -a -q
-retval=$?
 
-# echo $retval
+#Stop and rm the containers. I don't need to know if it fails
+#because I want them gone. If they aren't there it will just be
+#faster
 
-if [ $retval -ne 0 ]; then
-	docker stop `docker ps --no-trunc -a -q`
-	docker rm `docker ps --no-trunc -a -q`
-    echo "Return code was not zero but $retval"
-fi
-
-
+docker stop `docker ps --no-trunc -a -q` 2>/dev/null
+docker rm `docker ps --no-trunc -a -q` 2>/dev/null
