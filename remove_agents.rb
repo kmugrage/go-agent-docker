@@ -37,15 +37,9 @@ def delete_agent(uuid)
 end
 
 agents = agent_search()
-print agents.is_a?(Array)
-print "\n"
 
 for index in 0 ... agents.size
-  # puts agents[index].is_a?(Hash)
-  if agents[index]["resources"][0].to_s != "manager"
-  # if !agents[index]["resources"].has_value?("manager")
-    # puts agents[index]["resources"][0].to_s
-    # puts "foo"
+  if agents[index]["resources"][0].to_s == "docker_created"
     disable_agent(agents[index]["uuid"])
     delete_agent(agents[index]["uuid"])
   end
