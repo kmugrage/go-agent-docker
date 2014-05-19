@@ -39,7 +39,7 @@ end
 agents = agent_search()
 
 for index in 0 ... agents.size
-  if agents[index]["resources"][0].to_s == "docker_created"
+  if agents[index]["resources"].include?("docker_created")
     disable_agent(agents[index]["uuid"])
     delete_agent(agents[index]["uuid"])
   end
