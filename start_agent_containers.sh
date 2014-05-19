@@ -2,5 +2,5 @@
 
 for i in {1..5} 
 do 
-	docker run -d kmugrage/go-agent
+	docker run -d gocd/go-agent
 done
