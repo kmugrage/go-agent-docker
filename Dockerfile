@@ -34,4 +34,4 @@ ADD autoregister.properties /var/lib/go-agent/config/autoregister.properties
 ADD go-agent /etc/default/go-agent
 
 # This should probably be something like supervisord to keep the container running
-CMD /etc/init.d/go-agent start && tail -F /var/log/go-agent/go-agent.log
+CMD /usr/share/go-agent/agent.sh && tail -F /var/log/go-agent/go-agent.log
