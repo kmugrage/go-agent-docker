@@ -6,5 +6,5 @@ AGENT_WORK_DIR=/var/lib/go-agent
 export AGENT_WORK_DIR
 DAEMON=Y
 VNC=N
-JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre
+JAVA_HOME=/usr/lib/jvm/default-java/jre
 export JAVA_HOME
