@@ -13,9 +13,9 @@ RUN gem install rake
 
 RUN apt-get update && apt-get install -y default-jre-headless
 
-# When the public apt repository is live this won't be needed, but for now I copy it in and 
-# install it manually
-ADD go-agent-14.1.0-18882.deb /tmp/go-agent-14.1.0-18882.deb
+# Modified to wget the agent from the download site. When a package repo
+# is available we can use that and always get the lastest
+RUN cd /tmp && wget -nc -nv http://download01.thoughtworks.com/go/14.1.0/ga/go-agent-14.1.0-18882.deb  
 RUN dpkg -i -E /tmp/go-agent-14.1.0-18882.deb
 
 # This file has my authorization string so that I don't have to approve new agents. 
