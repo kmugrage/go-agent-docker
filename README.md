@@ -1,22 +1,20 @@
 Go Agent Docker
 ===============
 
-Creating Go CD agents from a dockerfile. 
-
-This is really mostly a spike at this point. I wanted a way to run multiple agents in
-discrete containers on my machine. The files should work for anyone else if you edit
-go-agent and autoregister.properties
+Creating Go CD agents from a Dockerfile.
 
 ## Usage
 
-git clone this repo
+```
+docker build -t gocd/agent .
+docker run -e "GO_SERVER=your_host" -e "GO_SERVER_PORT=8153" gocd/agent
+```
 
-Build your image
-<code>
-docker build -t your-repo-name/go-agent .
-</code>
+## Autoregister
 
-This will launch 10 agents in containers
-<code>
-for i in {1..10} ; do docker run -d kmugrage/go-agent ; done
-</code>
+If you want to autoregister, just pass the following environment variables.
+
+```
+GO_AUTOREGISTER_KEY - the autoregistration key so that your agents are immediately available
+GO_AUTOREGISTER_RESOURCES - [optional] resources to register for your new agent
+```
