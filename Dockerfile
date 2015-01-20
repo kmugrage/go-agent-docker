@@ -8,6 +8,7 @@ FROM dockerfile/ubuntu
 MAINTAINER Ken Mugrage <kmugrage@thoughtworks.com>
 
 # My agents need Ruby
+RUN apt-get update
 RUN apt-get install -y ruby1.9.1
 RUN gem install rake
 
