@@ -1,3 +1,7 @@
+
+This should be considered deprecated. Check https://hub.docker.com/u/gocd/
+==========================================================================
+
 Go Agent Docker
 ===============
 
